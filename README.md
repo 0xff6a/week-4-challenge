@@ -37,4 +37,4 @@ end
 
 def name=(name)
   @name = name
-endW
+end
