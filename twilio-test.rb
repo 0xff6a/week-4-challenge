@@ -11,5 +11,5 @@ auth_token = '65f71c1911468212140ef06343fd7985'
 @client.account.messages.create({
 	:from => '+441539234045', 
 	:to => '+447852349285',
-	:body => 'Hey there this was sent by the computer @ #{Time.now}'   
+	:body => "Hey there this was sent by the computer @ #{Time.now}"   
 })
