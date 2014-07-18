@@ -7,8 +7,11 @@ class Array
 		memory
 	end
 
-	def my_recursive_inject
-
+	def my_recursive_inject(memory = self.first, &block)
+		return memory if self.empty?
+		arg = self.shift
+		return yield(self.my_recursive_inject(memory, &block), arg)
 	end
+
 
 end

@@ -39,24 +39,25 @@ describe 'Inject method:' do
 			expect(array.my_recursive_inject(arg) { |a,b| a }).to be arg
 		end
 		
-		xit 'should default to first element of the collection if no initial value is given' do
-			expect(array.my_recursive_inject() {|a,b| a }).to be array.first
+		it 'should default to first element of the collection if no initial value is given' do
+			expectation =  array.first
+			expect(array.my_recursive_inject() {|a,b| a }).to be expectation
 		end
 
-		xit 'should be passed a block' do
+		it 'should be passed a block' do
 			expect{ |a| array.my_recursive_inject(&a) }.to  yield_successive_args(Array, Array, Array)
 		end
 
-		xit 'should have specific arguments passed to the block' do
+		it 'should have specific arguments passed to the block' do
 			expect{ |a| [1].my_recursive_inject(&a) }.to  yield_with_args(1,1)
 		end
 
-		xit 'implement inject functionality when passed no initial argument' do
+		it 'implement inject functionality when passed no initial argument' do
 			expect(array.my_recursive_inject(0) {|a,b| a + b }).to be 6
 		end
 
-		xit 'implement inject functionality when passed an initial argument' do
-			expect(array.my_recursive_x§xinject(arg) {|a,b| a * b }).to be 60
+		it 'implement inject functionality when passed an initial argument' do
+			expect(array.my_recursive_inject(arg) {|a,b| a * b }).to be 60
 		end
 
 	end
