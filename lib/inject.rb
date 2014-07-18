@@ -13,5 +13,4 @@ class Array
 		return yield(self.my_recursive_inject(memory, &block), arg)
 	end
 
-
 end
