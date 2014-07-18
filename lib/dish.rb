@@ -1,6 +1,6 @@
 class Dish
 
-	DEFAULT_PRICE = 10.00
+	DEFAULT_PRICE = 10.0
 
 	attr_reader :name, :price
 
