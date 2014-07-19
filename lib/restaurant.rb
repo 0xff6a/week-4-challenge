@@ -2,15 +2,23 @@ class Restaurant
 
 	SECONDS_IN_AN_HOUR = 3600
 
-	attr_accessor :menu, :phone
+	attr_accessor :menu, :orders
+	attr_reader :phone
 
 	def initialize(menu, phone)
 		@menu = menu
 		@phone = phone
+		@orders = []
 	end
 
 	def send_confirmation_to(customer)
 		phone.send_sms(customer.phone_number, confirmation_msg)
+	end
+
+	def receive_order(order, customer)
+		return raise_error if not order.valid?
+		@orders << order
+		send_confirmation_to(customer)
 	end
 
 	def check_time(offset = 0)

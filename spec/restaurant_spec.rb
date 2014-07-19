@@ -3,9 +3,10 @@ require 'restaurant'
 describe Restaurant do
 
 	let(:menu)				{ double :menu																													}
-	let(:phone)				{ double :phone																													}
+	let(:phone)				{ double :phone	, :send_sms =>	nil																			}
 	let(:restaurant) 	{ Restaurant.new(menu, phone) 																					}
 	let(:customer)		{ double :customer,	:phone_number	=>	123																}
+	let(:order)				{ double :order, :valid? => true 																				}
 	let(:time)				{ "#{(Time.new + Restaurant::SECONDS_IN_AN_HOUR).strftime('%H:%M:%S')}"	}	
 	let(:msg)					{ "Thank you for your order. It is now confirmed "\
 											"and will be delivered before #{time}"																}
@@ -18,8 +19,14 @@ describe Restaurant do
 		expect(restaurant.phone).to be phone
 	end
 
-	it 'should have no order initialy' do
+	it 'should have no orders initialy' do
+		expect(restaurant.orders).to eq []
+	end
 
+	it 'should be able to receive orders from customers' do
+		expect(order).to receive(:valid?).and_return(true)
+		restaurant.receive_order(order, customer)
+		expect(restaurant.orders).to eq [order]
 	end
 
 	it 'should print the time' do
