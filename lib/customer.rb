@@ -1,3 +1,5 @@
+require './lib/dish'
+
 class Customer
 
 	DEFAULT_NUMBER = '+447852349285'
@@ -26,7 +28,7 @@ class Customer
 			dish = select_dish
 			break if dish.empty?
 			quantity = select_quantity
-			@order.add(dish, quantity)
+			@order.add(Dish.new(dish, quantity))
 		end
 	end
 
@@ -42,7 +44,7 @@ class Customer
 
 	def select_quantity
 		print_update_quantity_msg
-		get_input
+		get_input.to_f
 	end
 
 	def print_select_item_msg

@@ -2,8 +2,8 @@ require 'phone'
 
 describe Phone do
 
-	let(:phone) {Phone.new}
-	let(:my_number) { '+447852349285'}
+	let(:phone) 		{ Phone.new 			}
+	let(:my_number) { '+447852349285'	}
 
 	it 'should have a default number' do
 		my_number = Phone::DEFAULT_NUMBER

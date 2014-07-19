@@ -1,3 +1,5 @@
+require './lib/dish'
+
 class Order
 
 	attr_accessor :items, :total

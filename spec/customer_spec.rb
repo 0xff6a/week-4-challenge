@@ -54,7 +54,7 @@ describe Customer do
   	expect(customer).to receive(:select_dish).and_return(dish)
   	expect(customer).to receive(:select_quantity).and_return(quantity)
   	expect(customer).to receive(:select_dish).and_return("")
-  	expect(new_order).to receive(:add).with(dish, quantity)
+  	expect(new_order).to receive(:add)
   	customer.create_order_from(menu, new_order)
   end
 
