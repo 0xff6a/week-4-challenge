@@ -48,7 +48,7 @@ class Customer
 
 	def select_quantity_from(menu)
 		print_update_quantity_msg
-		get_input.to_f
+		get_input.to_i
 	end
 
 	def print_select_item_msg

@@ -2,9 +2,9 @@ require 'order'
 
 describe Order do
 	
-	let(:multiple)	{ 2 														}
-	let(:order) 		{ Order.new											}
-	let(:dish)  		{ double :dish, :price => 25.0	}
+	let(:multiple)	{ 2 																					}
+	let(:order) 		{ Order.new																		}
+	let(:dish)  		{ double :dish, :name => "yum", :price => 25.0 	}
 
 	it 'should not contain any items initially' do
 		expect(order.items).to be_empty
@@ -34,6 +34,13 @@ describe Order do
 		expect(order).to be_valid
 		order.total = 0
 		expect(order).not_to be_valid
+	end
+
+	it 'can display the order' do
+		order.add(dish)
+		msg = "yum 1x @ 25.0"
+		expect(STDOUT).to receive(:puts).with(msg)
+		order.display
 	end
 
 end

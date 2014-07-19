@@ -26,6 +26,14 @@ class Order
 		item_total == @total
 	end
 
+	def display
+		items.each { |dish, quantity| display_item(dish, quantity) }
+	end
+
+	def display_item(dish, quantity)
+		puts "#{dish.name} #{quantity}x @ #{dish.price}"
+	end
+
 	def item_total
 		result = 0.0
 		items.each { |dish, quantity| result += dish.price * quantity }
