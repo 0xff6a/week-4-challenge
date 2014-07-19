@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-	let(:menu) { Menu.new 																			}
+	let(:menu) { Menu.new 											 								}
 	let(:dish) { double :dish, :name => "Faggots", :price => 10 }
 
 	it 'should not contain any dishes initially' do
@@ -15,8 +15,14 @@ describe Menu do
 	end	
 
 	it 'should know if it contains a dish' do
+		expect(menu.contains?(dish.name)).to be false
 		menu.add_dish(dish)
-		expect(menu.contains?(dish)).to be true
+		expect(menu.contains?(dish.name)).to be true
+	end
+
+	it 'should return the price of a dish given the name' do
+		menu.add_dish(dish)
+		expect(menu.lookup_price("Faggots")).to eq 10
 	end
 
 	it 'should print menu to terminal' do

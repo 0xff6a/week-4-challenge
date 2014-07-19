@@ -2,14 +2,14 @@ require 'customer'
 
 describe Customer do
 
-	let(:number)		{	Customer::DEFAULT_NUMBER				}
-	let(:customer) 	{ Customer.new 				 						}
-	let(:new_order)	{ double :new_order								}
-	let(:menu)			{ double :menu, :display => nil		}
-	let(:dish)			{ double :dish, :empty? => false 	}	
-	let(:quantity)	{ double :quantity 								}
+	let(:number)		{	Customer::DEFAULT_NUMBER																									}
+	let(:customer) 	{ Customer.new 				 																											}
+	let(:new_order)	{ double :new_order																													}
+	let(:menu)			{ double :menu, :display => nil, :contains? => true, :lookup_price => 10.0	}
+	let(:dish)			{ double :dish, :empty? => false 																						}	
+	let(:quantity)	{ double :quantity 																													}
 
-	before(:each) 	{ allow(STDOUT).to receive(:puts) }
+	before(:each) 	{ allow(STDOUT).to receive(:puts) 																					}
 
 	it 'should have a phone number' do
 		expect(customer.phone_number).to be number

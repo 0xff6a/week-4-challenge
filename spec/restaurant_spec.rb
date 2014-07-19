@@ -11,6 +11,8 @@ describe Restaurant do
 	let(:msg)					{ "Thank you for your order. It is now confirmed "\
 											"and will be delivered before #{time}"																}
 	
+	before(:each)			{ allow(STDOUT).to receive(:puts)																				}
+
 	it 'should have no menu initially' do
 		expect(restaurant.menu).to be nil
 	end
@@ -38,7 +40,6 @@ describe Restaurant do
 	end
 
 	it 'should send a text confirmation of an order' do
-		allow(STDOUT).to receive(:puts)
 		expect(phone).to receive(:send_sms).with(123, msg)
 		restaurant.send_confirmation_to(customer)
 	end	

@@ -11,7 +11,15 @@ class Menu
 	end
 
 	def contains?(dish)
-		@dishes.include?(dish)
+		dish_names.include?(dish)
+	end
+
+	def dish_names
+		@dishes.map { |dish| dish.name }
+	end
+
+	def lookup_price(name)
+		@dishes.select{ |dish| dish.name == name }.first.price
 	end
 
 	def display
