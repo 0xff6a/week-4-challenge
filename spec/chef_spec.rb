@@ -20,7 +20,7 @@ describe Chef do
   	chef.load_data_from_file
 	end
 
-	it 'it can create a menu for a restaurant from file' do
+	it 'can create a menu for a restaurant from file' do
 		expect(restaurant).to receive(:menu=)
 		chef.create_menu_for(restaurant)
 	end
