@@ -14,6 +14,11 @@ describe Menu do
 		expect(menu.dishes).to eq [dish]
 	end	
 
+	it 'should know if it contains a dish' do
+		menu.add_dish(dish)
+		expect(menu.contains?(dish)).to be true
+	end
+
 	it 'should print menu to terminal' do
 		menu.add_dish(dish)
 		line = "Faggots: 10"

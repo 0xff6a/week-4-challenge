@@ -12,6 +12,7 @@ class Restaurant
 	end
 
 	def send_confirmation_to(customer)
+		print_status
 		phone.send_sms(customer.phone_number, confirmation_msg)
 	end
 
@@ -23,6 +24,10 @@ class Restaurant
 
 	def check_time(offset = 0)
 		"#{(Time.new + offset*SECONDS_IN_AN_HOUR).strftime('%H:%M:%S')}"
+	end
+
+	def print_status
+		puts "Confirming order....Please check your phone"
 	end
 
 	def confirmation_msg

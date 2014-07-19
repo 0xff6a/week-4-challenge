@@ -11,6 +11,10 @@ describe Chef do
 		expect(chef.source).to eq Chef::DEFAULT_FILE
 	end
 
+	it 'has a menu' do
+		expect(chef.menu).to eq menu
+	end
+
 	it 'can read from a csv file' do
 		row = double :row;
 		expect(CSV).to receive(:foreach).with(Chef::DEFAULT_FILE).and_yield(row)
@@ -21,7 +25,7 @@ describe Chef do
 	end
 
 	it 'can create a menu for a restaurant from file' do
-		expect(restaurant).to receive(:menu=)
+		expect(restaurant).to receive(:menu=).with(menu)
 		chef.create_menu_for(restaurant)
 	end
 	

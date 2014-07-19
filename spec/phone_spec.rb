@@ -6,8 +6,7 @@ describe Phone do
 	let(:my_number) { '+447852349285'	}
 
 	it 'should have a default number' do
-		my_number = Phone::DEFAULT_NUMBER
-		expect(phone.number).to eq my_number
+		expect(phone.number).to eq Phone::DEFAULT_NUMBER
 	end
 
 	it 'can be given another number' do

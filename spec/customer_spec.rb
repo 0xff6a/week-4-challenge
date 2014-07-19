@@ -20,7 +20,7 @@ describe Customer do
   end
 
   it 'should be able to create an order' do
-  	expect(customer).to receive(:add_items_to_order).and_return(nil)
+  	expect(customer).to receive(:add_items_to_order_from).and_return(nil)
   	customer.create_order_from(menu, new_order)
   	expect(customer.order).to be new_order
   end
@@ -34,26 +34,19 @@ describe Customer do
   it 'should be able to select a dish' do
   	expect(STDOUT).to receive(:puts).with("Please select a dish")
   	expect(STDIN).to receive(:gets).and_return("")
-  	customer.select_dish
+  	customer.select_dish_from(menu)
   end
 
   it 'should be able to update quantity' do
   	expect(STDOUT).to receive(:puts).with("How many would you like?")
   	expect(STDIN).to receive(:gets).and_return("")
-  	customer.select_quantity
-  end
-
-  it 'should be able to select an item' do
-  	expect(STDOUT).to receive(:puts).with("Item selection - hit enter twice to finish")
-  	expect(customer).to receive(:select_dish).and_return(dish)
-  	expect(customer).to receive(:select_quantity).and_return(quantity)
-		expect(customer.select_item).to eq [dish, quantity]
+  	customer.select_quantity_from(menu)
   end
 
   it 'should be able to select multiple items' do
-  	expect(customer).to receive(:select_dish).and_return(dish)
-  	expect(customer).to receive(:select_quantity).and_return(quantity)
-  	expect(customer).to receive(:select_dish).and_return("")
+  	expect(customer).to receive(:select_dish_from).and_return(dish)
+  	expect(customer).to receive(:select_quantity_from).and_return(quantity)
+  	expect(customer).to receive(:select_dish_from).and_return("")
   	expect(new_order).to receive(:add)
   	customer.create_order_from(menu, new_order)
   end

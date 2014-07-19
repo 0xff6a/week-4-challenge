@@ -15,34 +15,29 @@ class Customer
 	def create_order_from(menu, new_order)
 		@order = new_order
 		menu.display
-		add_items_to_order
+		add_items_to_order_from(menu)
 	end
 
 	def send_order_to(restaurant)
 		restaurant.receive_order(customer.order, customer)
 	end
 
-	def add_items_to_order
+	def add_items_to_order_from(menu)
 		print_select_item_msg
 		loop do
-			dish = select_dish
+			dish = select_dish_from(menu)
 			break if dish.empty?
-			quantity = select_quantity
+			quantity = select_quantity_from(menu)
 			@order.add(Dish.new(dish, quantity))
 		end
 	end
 
-	def select_item
-			print_select_item_msg
-			[select_dish, select_quantity]
-	end
-
-	def select_dish
+	def select_dish_from(menu)
 		print_select_dish_msg
 		get_input
 	end
 
-	def select_quantity
+	def select_quantity_from(menu)
 		print_update_quantity_msg
 		get_input.to_f
 	end

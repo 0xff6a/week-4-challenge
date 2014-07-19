@@ -10,6 +10,10 @@ class Menu
 		@dishes << dish
 	end
 
+	def contains?(dish)
+		@dishes.include?(dish)
+	end
+
 	def display
 		puts "-------------MENU-------------"
 		@dishes.each do |dish|

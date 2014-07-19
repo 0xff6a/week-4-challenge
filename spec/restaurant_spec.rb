@@ -38,6 +38,7 @@ describe Restaurant do
 	end
 
 	it 'should send a text confirmation of an order' do
+		allow(STDOUT).to receive(:puts)
 		expect(phone).to receive(:send_sms).with(123, msg)
 		restaurant.send_confirmation_to(customer)
 	end	
