@@ -28,6 +28,8 @@ class Order
 
 	def display
 		items.each { |dish, quantity| display_item(dish, quantity) }
+		puts "--------------------------"
+		puts "Total: £#{@total}"
 	end
 
 	def display_item(dish, quantity)
