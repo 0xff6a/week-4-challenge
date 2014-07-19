@@ -17,7 +17,6 @@ fatty = Customer.new
 fatty.create_order_from(funny_foods.menu, Order.new)
 #Get the customer to try and scam the restaurant
 fatty.order.total = 1.5
-puts "------Current Order-------"
 fatty.order.display
 begin
 #Get the customer to send the order to the restaurant
@@ -28,6 +27,5 @@ rescue RuntimeError => error
 end
 #Try again
 fatty.create_order_from(funny_foods.menu, Order.new)
-puts "------Current Order-------"
 fatty.order.display
 fatty.send_order_to(funny_foods)

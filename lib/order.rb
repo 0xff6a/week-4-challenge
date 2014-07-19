@@ -27,9 +27,11 @@ class Order
 	end
 
 	def display
+		puts "------Current Order-------"
 		items.each { |dish, quantity| display_item(dish, quantity) }
 		puts "--------------------------"
 		puts "Total: £#{@total}"
+		puts "--------------------------"
 	end
 
 	def display_item(dish, quantity)

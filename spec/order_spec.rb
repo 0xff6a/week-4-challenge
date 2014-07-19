@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
 	
-	let(:multiple)	{ 2 																					}
-	let(:order) 		{ Order.new																		}
+	let(:multiple)	{ 2 																						}
+	let(:order) 		{ Order.new																			}
 	let(:dish)  		{ double :dish, :name => "yum", :price => 25.0 	}
 
 	it 'should not contain any items initially' do
