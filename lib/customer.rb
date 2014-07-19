@@ -10,6 +10,13 @@ class Customer
 
 	def create_order(new_order, items = {})
 		@order = new_order
+		add_items_to_order(items)
+	end
+
+	def add_items_to_order(items)
+		items.each do |dish, quantity|
+			@order.add(dish, quantity) 
+		end 
 	end
 
 	def select_item

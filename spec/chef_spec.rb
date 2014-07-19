@@ -3,7 +3,7 @@ require 'CSV'
 
 describe Chef do
 
-	let(:menu)				{ double :menu, :add => nil					}
+	let(:menu)				{ double :menu, :add_dish => nil		}
 	let(:chef) 				{ Chef.new(menu)										}
 	let(:restaurant) 	{ double :restaurant, :menu => menu }
 

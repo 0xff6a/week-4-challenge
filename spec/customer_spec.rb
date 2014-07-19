@@ -2,11 +2,11 @@ require 'customer'
 
 describe Customer do
 
-	let(:number)		{	'+447852349285'								}
-	let(:customer) 	{ Customer.new(number) 					}
-	let(:new_order)	{ double :new_order 						}
-	let(:dish)			{ double :dish 									}
-	let(:quantity)	{ double :quantity 							}
+	let(:number)		{	'+447852349285'									}
+	let(:customer) 	{ Customer.new(number) 						}
+	let(:new_order)	{ double :new_order							 	}
+	let(:dish)			{ double :dish 										}	
+	let(:quantity)	{ double :quantity 								}
 
 	it 'should have a phone number' do
 		expect(customer.phone_number).to be number
@@ -17,7 +17,8 @@ describe Customer do
   end
 
   it 'should be able to create an order' do
-  	customer.create_order(new_order)
+  	expect(new_order).to receive(:add).with(dish, quantity)
+  	customer.create_order(new_order, { dish => quantity })
   	expect(customer.order).to be new_order
   end
 
