@@ -2,8 +2,8 @@ require 'customer'
 
 describe Customer do
 
-	let(:number)		{	'+447852349285'									}
-	let(:customer) 	{ Customer.new(number) 						}
+	let(:number)		{	Customer::DEFAULT_NUMBER				}
+	let(:customer) 	{ Customer.new 				 						}
 	let(:new_order)	{ double :new_order								}
 	let(:menu)			{ double :menu, :display => nil		}
 	let(:dish)			{ double :dish, :empty? => false 	}	

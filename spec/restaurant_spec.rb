@@ -4,15 +4,15 @@ describe Restaurant do
 
 	let(:menu)				{ double :menu																													}
 	let(:phone)				{ double :phone	, :send_sms =>	nil																			}
-	let(:restaurant) 	{ Restaurant.new(menu, phone) 																					}
+	let(:restaurant) 	{ Restaurant.new(phone) 																								}
 	let(:customer)		{ double :customer,	:phone_number	=>	123																}
 	let(:order)				{ double :order, :valid? => true 																				}
 	let(:time)				{ "#{(Time.new + Restaurant::SECONDS_IN_AN_HOUR).strftime('%H:%M:%S')}"	}	
 	let(:msg)					{ "Thank you for your order. It is now confirmed "\
 											"and will be delivered before #{time}"																}
 	
-	it 'should have a menu' do
-		expect(restaurant.menu).to be menu
+	it 'should have no menu initially' do
+		expect(restaurant.menu).to be nil
 	end
 
 	it 'should have a phone' do

@@ -29,4 +29,11 @@ describe Order do
 		expect(order.total).to eq dish.price
 	end
 
+	it 'can check if the total is valid' do
+		order.add(dish)
+		expect(order).to be_valid
+		order.total = 0
+		expect(order).not_to be_valid
+	end
+
 end

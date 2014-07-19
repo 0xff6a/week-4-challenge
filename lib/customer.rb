@@ -1,9 +1,11 @@
 class Customer
 
+	DEFAULT_NUMBER = '+447852349285'
+
 	attr_reader	:phone_number
 	attr_accessor :order
 
-	def initialize(phone_number)
+	def initialize(phone_number= DEFAULT_NUMBER)
 		@phone_number = phone_number
 		@order = nil
 	end

@@ -5,8 +5,8 @@ class Restaurant
 	attr_accessor :menu, :orders
 	attr_reader :phone
 
-	def initialize(menu, phone)
-		@menu = menu
+	def initialize(phone)
+		@menu = nil
 		@phone = phone
 		@orders = []
 	end

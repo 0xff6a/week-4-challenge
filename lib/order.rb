@@ -20,4 +20,14 @@ class Order
 		@total += price * quantity
 	end
 
+	def valid?
+		item_total == @total
+	end
+
+	def item_total
+		result = 0.0
+		items.each { |dish, quantity| result += dish.price * quantity }
+		result
+	end
+
 end
