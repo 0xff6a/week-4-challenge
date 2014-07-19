@@ -12,5 +12,4 @@ class Array
 		arg = self.shift
 		return yield(self.my_recursive_inject(memory, &block), arg)
 	end
-
 end
