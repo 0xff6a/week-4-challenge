@@ -4,9 +4,12 @@ describe Customer do
 
 	let(:number)		{	'+447852349285'									}
 	let(:customer) 	{ Customer.new(number) 						}
-	let(:new_order)	{ double :new_order							 	}
-	let(:dish)			{ double :dish 										}	
+	let(:new_order)	{ double :new_order								}
+	let(:menu)			{ double :menu, :display => nil		}
+	let(:dish)			{ double :dish, :empty? => false 	}	
 	let(:quantity)	{ double :quantity 								}
+
+	before(:each) 	{ allow(STDOUT).to receive(:puts) }
 
 	it 'should have a phone number' do
 		expect(customer.phone_number).to be number
@@ -17,9 +20,15 @@ describe Customer do
   end
 
   it 'should be able to create an order' do
-  	expect(new_order).to receive(:add).with(dish, quantity)
-  	customer.create_order(new_order, { dish => quantity })
+  	expect(customer).to receive(:add_items_to_order).and_return(nil)
+  	customer.create_order_from(menu, new_order)
   	expect(customer.order).to be new_order
+  end
+
+  it 'should be able to send an order to a restaurant' do
+  	restaurant = double :restaurant
+  	expect(restaurant).to receive(:receive_order).with(customer.order, customer)
+  	customer.send_order_to(restaurant)
   end
 
   it 'should be able to select a dish' do
@@ -38,13 +47,15 @@ describe Customer do
   	expect(STDOUT).to receive(:puts).with("Item selection - hit enter twice to finish")
   	expect(customer).to receive(:select_dish).and_return(dish)
   	expect(customer).to receive(:select_quantity).and_return(quantity)
-		expect(customer.select_item).to include(dish => quantity)
+		expect(customer.select_item).to eq [dish, quantity]
   end
 
-  xit 'should be able to select multiple items' do
-  	expect(customer).to receive(:select_item).and_return(dish => quantity)
-  	expect(customer).to receive(:select_item).and_return(dish => quantity)
-  	expect(customer).to receive(:select_item).and_return("")
+  it 'should be able to select multiple items' do
+  	expect(customer).to receive(:select_dish).and_return(dish)
+  	expect(customer).to receive(:select_quantity).and_return(quantity)
+  	expect(customer).to receive(:select_dish).and_return("")
+  	expect(new_order).to receive(:add).with(dish, quantity)
+  	customer.create_order_from(menu, new_order)
   end
 
 end

@@ -8,20 +8,29 @@ class Customer
 		@order = nil
 	end
 
-	def create_order(new_order, items = {})
+	def create_order_from(menu, new_order)
 		@order = new_order
-		add_items_to_order(items)
+		menu.display
+		add_items_to_order
 	end
 
-	def add_items_to_order(items)
-		items.each do |dish, quantity|
-			@order.add(dish, quantity) 
-		end 
+	def send_order_to(restaurant)
+		restaurant.receive_order(customer.order, customer)
+	end
+
+	def add_items_to_order
+		print_select_item_msg
+		loop do
+			dish = select_dish
+			break if dish.empty?
+			quantity = select_quantity
+			@order.add(dish, quantity)
+		end
 	end
 
 	def select_item
 			print_select_item_msg
-			Hash[select_dish, select_quantity]
+			[select_dish, select_quantity]
 	end
 
 	def select_dish
@@ -48,6 +57,10 @@ class Customer
 
 	def get_input(input = STDIN)
 		input.gets.chomp
+	end
+
+	def customer
+		self
 	end
 
 end
