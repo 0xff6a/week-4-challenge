@@ -18,7 +18,7 @@ class Phone
 	end
 
 	def initialize_twilio_client
-		@client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+		@client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
 	end
 			
 	def create_new_twilio_msg(customer_number, message_body)
