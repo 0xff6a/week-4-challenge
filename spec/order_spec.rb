@@ -39,7 +39,7 @@ describe Order do
 	it 'can display the order' do
 		order.add(dish)
 		allow(STDOUT).to receive(:puts)
-		msg = "yum 1x @ 25.0"
+		msg = "yum 1x @ £25.0"
 		expect(STDOUT).to receive(:puts).with(msg)
 		order.display
 	end

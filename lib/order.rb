@@ -27,15 +27,15 @@ class Order
 	end
 
 	def display
-		puts "------Current Order-------"
+		puts "--------Current Order---------"
 		items.each { |dish, quantity| display_item(dish, quantity) }
-		puts "--------------------------"
-		puts "Total: £#{@total}"
-		puts "--------------------------"
+		puts "------------------------------"
+		puts "Total: £#{@total.round(2)}"
+		puts "------------------------------"
 	end
 
 	def display_item(dish, quantity)
-		puts "#{dish.name} #{quantity}x @ #{dish.price}"
+		puts "#{dish.name} #{quantity}x @ £#{dish.price.round(2)}"
 	end
 
 	def item_total
