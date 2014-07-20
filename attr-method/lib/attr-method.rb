@@ -34,11 +34,6 @@ class TestWriter
 
 	my_attr_writer :first_variable, :second_variable
 
-	def initialize
-		@first_variable = true
-		@second_variable = false
-	end
-
 end
 
 class TestAccessor
@@ -47,7 +42,6 @@ class TestAccessor
 
 	def initialize
 		@first_variable = true
-		@second_variable = false
 	end
 
 end

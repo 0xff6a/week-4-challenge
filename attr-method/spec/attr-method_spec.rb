@@ -33,8 +33,8 @@ describe 'attr methods' do
 		end
 
 		it 'should create a setter method' do
-			test_access.first_variable = false
-			expect(test_access.first_variable).to be false
+			test_access.second_variable = false
+			expect(test_access.second_variable).to be false
 		end
 
 	end
