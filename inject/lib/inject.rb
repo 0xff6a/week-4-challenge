@@ -9,7 +9,9 @@ class Array
 
 	def my_recursive_inject(memory = self.first, &block)
 		return memory if self.empty?
-		arg = self.shift
-		return yield(self.my_recursive_inject(memory, &block), arg)
+		array = self.clone
+		argument = array.shift
+		return yield(array.my_recursive_inject(memory, &block), argument)
 	end
+	
 end

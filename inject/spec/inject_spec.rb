@@ -8,11 +8,11 @@ describe 'Inject method:' do
 	context 'Iterative inject' do
 
 		it 'should take an initial value argument' do
-			expect(array.my_inject(arg) { |a,b| a }).to be arg
+			expect(array.my_inject(arg) { |a,b| a }).to eq array.inject(arg) { |a,b| a }
 		end
 		
 		it 'should default to first element of the collection if no initial value is given' do
-			expect(array.my_inject() {|a,b| a }).to be array.first
+			expect(array.my_inject() {|a,b| a }).to eq array.inject() {|a,b| a }
 		end
 
 		it 'should be passed a block' do
@@ -24,11 +24,11 @@ describe 'Inject method:' do
 		end
 
 		it 'implement inject functionality when passed no initial argument' do
-			expect(array.my_inject(0) {|a,b| a + b }).to be 6
+			expect(array.my_inject(0) {|a,b| a + b }).to eq array.inject(0) {|a,b| a + b }
 		end
 
 		it 'implement inject functionality when passed an initial argument' do
-			expect(array.my_inject(arg) {|a,b| a * b }).to be 60
+			expect(array.my_inject(arg) {|a,b| a * b }).to eq array.inject(arg) {|a,b| a * b }
 		end
 
 	end
@@ -36,12 +36,11 @@ describe 'Inject method:' do
 	context 'Recursive inject' do
 
 		it 'should take an initial value argument' do
-			expect(array.my_recursive_inject(arg) { |a,b| a }).to be arg
+			expect(array.my_recursive_inject(arg) { |a,b| a }).to eq array.inject(arg) { |a,b| a }
 		end
 		
 		it 'should default to first element of the collection if no initial value is given' do
-			expectation =  array.first
-			expect(array.my_recursive_inject() {|a,b| a }).to be expectation
+			expect(array.my_recursive_inject() {|a,b| a }).to eq array.inject() {|a,b| a }
 		end
 
 		it 'should be passed a block' do
@@ -53,11 +52,11 @@ describe 'Inject method:' do
 		end
 
 		it 'implement inject functionality when passed no initial argument' do
-			expect(array.my_recursive_inject(0) {|a,b| a + b }).to be 6
+			expect(array.my_recursive_inject(0) {|a,b| a + b }).to eq array.inject(0) {|a,b| a + b }
 		end
 
 		it 'implement inject functionality when passed an initial argument' do
-			expect(array.my_recursive_inject(arg) {|a,b| a * b }).to be 60
+			expect(array.my_recursive_inject(arg) {|a,b| a * b }).to eq array.inject(arg) {|a,b| a * b }
 		end
 
 	end
