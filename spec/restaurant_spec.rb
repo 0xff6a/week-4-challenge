@@ -2,12 +2,13 @@ require 'restaurant'
 
 describe Restaurant do
 
+	let(:number)			{ 123																																		}
 	let(:menu)				{ double :menu																													}
 	let(:phone)				{ double :phone	, :send_sms =>	nil																			}
 	let(:restaurant) 	{ Restaurant.new(phone) 																								}
-	let(:customer)		{ double :customer,	:phone_number	=>	123																}
+	let(:customer)		{ double :customer,	:phone_number	=>	number														}
 	let(:order)				{ double :order, :valid? => true 																				}
-	let(:time)				{ "#{(Time.new + Restaurant::SECONDS_IN_AN_HOUR).strftime('%H:%M:%S')}"	}	
+	let(:time)				{ "#{(Time.new + Restaurant::SECONDS_IN_AN_HOUR).strftime('%H:%M')}"		}	
 	let(:msg)					{ "Thank you for your order. It is now confirmed "\
 											"and will be delivered before #{time}"																}
 	
@@ -21,7 +22,7 @@ describe Restaurant do
 		expect(restaurant.phone).to be phone
 	end
 
-	it 'should have no orders initialy' do
+	it 'should have no orders initially' do
 		expect(restaurant.orders).to eq []
 	end
 
@@ -32,7 +33,7 @@ describe Restaurant do
 	end
 
 	it 'should print the time' do
-		expect(restaurant.check_time).to eq Time.new.strftime('%H:%M:%S')
+		expect(restaurant.check_time).to eq Time.new.strftime('%H:%M')
 	end
 
 	it 'should print a confirmation message' do
@@ -40,7 +41,7 @@ describe Restaurant do
 	end
 
 	it 'should send a text confirmation of an order' do
-		expect(phone).to receive(:send_sms).with(123, msg)
+		expect(phone).to receive(:send_sms).with(number, msg)
 		restaurant.send_confirmation_to(customer)
 	end	
 

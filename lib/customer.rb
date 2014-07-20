@@ -15,6 +15,7 @@ class Customer
 	def create_order_from(menu, new_order)
 		@order = new_order
 		menu.display
+		print_select_item_msg
 		add_items_to_order_from(menu)
 	end
 
@@ -23,7 +24,6 @@ class Customer
 	end
 
 	def add_items_to_order_from(menu)
-		print_select_item_msg
 		loop do
 			dish = select_dish_from(menu)
 			break if dish.empty?

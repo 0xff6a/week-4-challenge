@@ -21,11 +21,11 @@ fatty.order.display
 begin
 #Get the customer to send the order to the restaurant
 fatty.send_order_to(funny_foods)
-#Rescue the error
+#Rescue the error coming from scam total
 rescue RuntimeError => error
 	puts error.message
 end
-#Try again
+#Try again!
 fatty.create_order_from(funny_foods.menu, Order.new)
 fatty.order.display
 fatty.send_order_to(funny_foods)

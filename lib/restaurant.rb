@@ -23,7 +23,7 @@ class Restaurant
 	end
 
 	def check_time(offset = 0)
-		"#{(Time.new + offset*SECONDS_IN_AN_HOUR).strftime('%H:%M:%S')}"
+		"#{(Time.new + offset*SECONDS_IN_AN_HOUR).strftime('%H:%M')}"
 	end
 
 	def print_status

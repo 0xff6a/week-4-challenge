@@ -29,18 +29,20 @@ describe Order do
 		expect(order.total).to eq dish.price
 	end
 
-	it 'can check if the total is valid' do
+	it 'knows if the total is valid' do
 		order.add(dish)
 		expect(order).to be_valid
-		order.total = 0
+	end
+
+	it 'knows if the total is not valid' do
+		order.total = multiple
 		expect(order).not_to be_valid
 	end
 
 	it 'can display the order' do
 		order.add(dish)
 		allow(STDOUT).to receive(:puts)
-		msg = "yum 1x @ £25.0"
-		expect(STDOUT).to receive(:puts).with(msg)
+		expect(STDOUT).to receive(:puts).with("yum 1x @ £25.0")
 		order.display
 	end
 
