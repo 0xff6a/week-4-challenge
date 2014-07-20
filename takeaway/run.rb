@@ -1,3 +1,5 @@
+require 'rubygems' 
+require 'bundler/setup'
 require './lib/chef'
 require './lib/customer'
 require './lib/menu'
