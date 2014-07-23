@@ -1,9 +1,9 @@
-require './lib/dish'
+require_relative 'dish'
 require 'CSV'
 
 class Chef
 
-	DEFAULT_FILE = './dishes.csv'
+	DEFAULT_FILE = File.join(Dir.home, 'MakersAcademy', 'week-4-challenge', 'takeaway', 'dishes.csv')
 
 	attr_accessor :source, :menu
 
