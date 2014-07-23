@@ -1,4 +1,5 @@
 require 'attr-method'
+require 'testers'
 
 describe 'attr methods' do 
 
