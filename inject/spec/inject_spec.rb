@@ -12,15 +12,15 @@ describe 'Inject method:' do
 		end
 		
 		it 'should default to first element of the collection if no initial value is given' do
-			expect(array.my_inject() {|a,b| a }).to eq array.inject() {|a,b| a }
+			expect(array.my_inject {|a,b| a }).to eq array.inject {|a,b| a }
 		end
 
 		it 'should be passed a block' do
-			expect{ |a| array.my_inject(&a) }.to  yield_successive_args(Array, Array, Array)
+			expect{ |a| array.my_inject(0, &a) }.to  yield_successive_args(Array, Array, Array)
 		end
 
 		it 'should have specific arguments passed to the block' do
-			expect{ |a| [1].my_inject(&a) }.to  yield_with_args(1,1)
+			expect{ |a| [1].my_inject(0, &a) }.to  yield_with_args(0,1)
 		end
 
 		it 'implement inject functionality when passed no initial argument' do
@@ -44,11 +44,11 @@ describe 'Inject method:' do
 		end
 
 		it 'should be passed a block' do
-			expect{ |a| array.my_recursive_inject(&a) }.to  yield_successive_args(Array, Array, Array)
+			expect{ |a| array.my_recursive_inject(0, &a) }.to  yield_successive_args(Array, Array, Array)
 		end
 
 		it 'should have specific arguments passed to the block' do
-			expect{ |a| [1].my_recursive_inject(&a) }.to  yield_with_args(1,1)
+			expect{ |a| [1].my_recursive_inject(0, &a) }.to  yield_with_args(0,1)
 		end
 
 		it 'implement inject functionality when passed no initial argument' do
