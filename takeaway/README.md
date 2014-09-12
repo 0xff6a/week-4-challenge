@@ -1,7 +1,14 @@
 OO Implementation of Takeaway Order Management
 ==============================================
 
-Created a simplified order management system for takeaways. Functionality is demonstrated in the run.rb script.
+Simplified order management system for takeaways. Functionality is demonstrated in the run.rb script.
+
+Features:
+--------
+- Menus can be uploaded from csv
+- Customer can select items from the menu
+- Customer can place an order
+- Restaurant can confirm successful orders via SMS
 
 Classes
 -------
@@ -12,3 +19,11 @@ Classes
 - Order: list of dishes, quantities and a total created by a customer
 - Phone: allows a restaurant to send sms confirmations of orders
 - Restaurant: receives and confirms customer orders
+
+Running the application:
+-----------------------
+$ ruby lib/run.rb from ./takeaway
+
+Running the tests:
+------------------
+$ rspec from ./takeaway
